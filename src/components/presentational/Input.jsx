@@ -1,18 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 const Input = ({ label, text, type, id, value, handleChange }) => (
-  <div className="form-group">
+  <div>
     <label htmlFor={label}>{text}</label>
-    <input
-      type={type}
-      className="form-control"
-      id={id}
-      value={value}
-      onChange={handleChange}
-      required
-    />
+    <input type={type} id={id} value={value} onChange={handleChange} required />
   </div>
 );
+
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
