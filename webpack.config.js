@@ -7,15 +7,15 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const WebpackBar = require('webpackbar');
+const WebpackBar = require("webpackbar");
 
 module.exports = env => {
   const devMode = process.env.NODE_ENV !== "production";
 
-  //user different .env files
+  // user different .env files
   const currentPath = path.join(__dirname);
-  const basePath = currentPath + "/.env";
-  const envPath = basePath + "." + env.ENVIRONMENT;
+  const basePath = `${currentPath}/.env`;
+  const envPath = `${basePath}.${env.ENVIRONMENT}`;
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
   const fileEnv = dotenv.config({ path: finalPath }).parsed;
   const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
@@ -43,7 +43,7 @@ module.exports = env => {
       ],
       splitChunks: {
         // include all types of chunks
-        chunks: 'all'
+        chunks: "all"
       }
     },
 
@@ -58,7 +58,7 @@ module.exports = env => {
       new webpack.HotModuleReplacementPlugin(),
       new WebpackBar()
     ],
-    devtool: 'source-map',
+    devtool: "source-map",
     devServer: {
       historyApiFallback: true,
       hot: true
@@ -82,9 +82,7 @@ module.exports = env => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
+          use: ["babel-loader", "eslint-loader"]
         },
         {
           test: /\.html$/,
@@ -117,7 +115,7 @@ module.exports = env => {
       ]
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx']
+      extensions: ["*", ".js", ".jsx"]
     }
   };
 };

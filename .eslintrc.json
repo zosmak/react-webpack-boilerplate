@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "never"],
+    "implicit-arrow-linebreak": ["off"],
+    "global-require": ["off"],
+    "object-curly-newline": ["off"],
+    "arrow-parens": ["off"],
+    "linebreak-style": ["off"],
+    "jsx-a11y/label-has-for": ["off"],
+    "no-param-reassign": ["off"]
+  }
+}
