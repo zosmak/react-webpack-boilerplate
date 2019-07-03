@@ -1,14 +1,10 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import Input from "../presentational/Input.jsx";
 
-class MainContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      text: ""
-    };
-  }
+class MainContainer extends React.Component {
+  state = {
+    text: ""
+  };
 
   handleChange = event => {
     this.setState({ [event.target.id]: event.target.value });
@@ -18,6 +14,7 @@ class MainContainer extends Component {
     const { text } = this.state;
     return (
       <div>
+        <img src={require('../../../public/favicon.ico')} />
         <div style={{ marginBottom: "10px" }}>Code example</div>
         <form id="article-form">
           <Input
@@ -29,11 +26,9 @@ class MainContainer extends Component {
             handleChange={this.handleChange}
           />
         </form>
-      </div>
+      </div >
     );
   }
 }
-export default MainContainer;
 
-const wrapper = document.getElementById("root");
-wrapper ? ReactDOM.render(<MainContainer />, wrapper) : false;
+export default MainContainer;
